@@ -1,0 +1,6 @@
+backend/venv/
+backend/patients.db
+backend/__pycache__/
+frontend/node_modules/
+frontend/dist/
+submission-email-draft.txt
