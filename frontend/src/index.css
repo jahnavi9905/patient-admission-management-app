@@ -1,0 +1,88 @@
+/* Simple, clean styling. Layout uses flexbox/grid so it adapts:
+   - Desktop: form and content are wide, table shows all columns
+   - Tablet/mobile: fields stack in one column, table scrolls sideways */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f8;
+  color: #1f2937;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+header h1 { margin-bottom: 4px; color: #1F4E79; }
+header p { margin-top: 0; color: #6b7280; }
+
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+/* Form + filter fields: responsive grid - as many columns as fit */
+.form, .filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.form h2, .form .form-buttons, .form .banner { grid-column: 1 / -1; }
+
+.field { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.field input, .field select {
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+button {
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+button.primary { background: #1F4E79; color: #fff; border-color: #1F4E79; }
+button.danger { color: #b91c1c; border-color: #fca5a5; }
+button:hover { opacity: 0.85; }
+
+.form-buttons { display: flex; gap: 8px; }
+.actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.actions button { padding: 5px 10px; font-size: 13px; }
+
+.error { color: #b91c1c; font-size: 13px; }
+.banner {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* Table scrolls horizontally on small screens instead of breaking layout */
+.table-wrap { overflow-x: auto; margin-top: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 760px; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid #e5e7eb; }
+th { background: #f9fafb; }
+
+.badge { padding: 2px 8px; border-radius: 999px; font-size: 12px; }
+.badge.admitted { background: #dcfce7; color: #166534; }
+.badge.discharged { background: #e5e7eb; color: #374151; }
+
+.empty, .loading { color: #6b7280; padding: 12px 0; }
+
+/* Small screens: single column already handled by the grid;
+   just tighten padding */
+@media (max-width: 600px) {
+  .page { padding: 10px; }
+  .card { padding: 12px; }
+}
